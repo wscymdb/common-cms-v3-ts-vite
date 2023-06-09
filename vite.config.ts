@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
+import path from 'path'
+
 import { fileURLToPath, URL } from 'node:url'
 
 // 自动引入element plus组件
@@ -14,6 +16,8 @@ import ElementPlus from 'unplugin-element-plus/vite'
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
 // https://vitejs.dev/config/
+
+const pathSrc = path.resolve(__dirname, 'src')
 export default defineConfig({
   plugins: [
     vue(),
@@ -23,6 +27,7 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()]
     }),
+
     DefineOptions(),
     ElementPlus({
       // options
