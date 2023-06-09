@@ -19,10 +19,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    // 使用@可以提示
     "baseUrl": ".",
     "paths": {
       "@/*":["./src/*"]
-    }
+    },
+
+    "types": ["unplugin-vue-define-options/macros-global" /* ... */]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
