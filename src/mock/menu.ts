@@ -39,6 +39,7 @@ const menus: IMenu[] = [
       }
     ]
   },
+
   {
     id: 30000,
     name: '唱',

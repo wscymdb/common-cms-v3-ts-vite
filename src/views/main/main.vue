@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-container class="main-container">
-      <el-aside width="200px">
+      <el-aside :width="mainStore.isCollapse ? '60px' : '200px'">
         <main-menu></main-menu>
       </el-aside>
       <el-container>
@@ -19,6 +19,9 @@
 <script setup lang="ts">
 import mainHeader from '@/components/main-header/main-header.vue'
 import mainMenu from '@/components/main-menu/main-menu.vue'
+import useMainStore from '@/store/main/main'
+
+const mainStore = useMainStore()
 </script>
 
 <style scoped lang="less">
@@ -31,6 +34,10 @@ import mainMenu from '@/components/main-menu/main-menu.vue'
   .el-aside {
     // height: 100%;
     background-color: #ddebfd;
+    transition: width 0.3s linear;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .el-header {
     background-color: #fff;
