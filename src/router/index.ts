@@ -2,6 +2,7 @@ import { LOGIN_TOKEN } from '@/global/constants'
 import { localCache } from '@/utils/cache'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+import { firstMenu } from '@/utils/map-menus'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -40,7 +41,8 @@ router.beforeEach((to, form, next) => {
     const token = localCache.getCache(LOGIN_TOKEN)
     if (!token) return next('/login')
 
-    //
+    // 进入main页面默认跳转路由的第一个
+    if (path === '/main') return next(firstMenu?.path)
 
     return next()
   }

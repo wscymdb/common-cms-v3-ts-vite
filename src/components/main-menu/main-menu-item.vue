@@ -2,48 +2,44 @@
   <div class="main-menu-item">
     <template v-for="menu in props.menus">
       <el-sub-menu
-        :index="menu.id"
+        :index="menu.id + ''"
         :key="menu.id"
-        v-if="menu.children && menu.children.length && menu.sidebar"
+        v-if="menu.children && menu.children.length"
       >
         <template #title>
-          <el-icon v-if="menu.meta.icon">
-            <component :is="menu.meta.icon"></component>
+          <el-icon v-if="menu.icon">
+            <component :is="menu.icon"></component>
           </el-icon>
-          <span>{{ menu.meta.title }}</span>
+          <span>{{ menu.name }}</span>
         </template>
         <main-menu-item :menus="menu.children"></main-menu-item>
       </el-sub-menu>
-      <el-menu-item :index="menu.path" :key="menu.id + 'sub'" v-else-if="menu.sidebar">
-        <el-icon v-if="menu.meta.icon">
-          <component :is="menu.meta.icon"></component>
+      <el-menu-item
+        :index="menu.id + ''"
+        :key="menu.id + 'sub'"
+        :route="menu.path"
+        v-else-if="menu.path"
+      >
+        <el-icon v-if="menu.icon">
+          <component :is="menu.icon"></component>
         </el-icon>
-        <span> {{ menu.meta.title }}</span>
+        <span> {{ menu.name }}</span>
       </el-menu-item>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { RouteComponent, RouteMeta } from 'vue-router'
-interface IRouteMeta extends RouteMeta {
-  title: string
-}
-declare type RawRouteComponent = RouteComponent | Lazy<RouteComponent>
-
-declare type Lazy<T> = () => Promise<T>
-
-interface IRouteRecordRaw {
-  id: string
+interface IMenu {
+  id: number | string
+  name: string
+  type: 1 | 2 | 3
   path: string
-  name: string | null | undefined
-  meta: IRouteMeta
-  sidebar: boolean
-  component: RawRouteComponent
-  children?: IRouteRecordRaw[]
+  icon?: string
+  children?: IMenu[]
 }
 interface IPros {
-  menus: IRouteRecordRaw[]
+  menus: IMenu[]
 }
 const props = defineProps<IPros>()
 </script>

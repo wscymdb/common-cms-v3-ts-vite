@@ -6,15 +6,25 @@
       </div>
       <div class="title">YM-CMS</div>
     </div>
-    <el-menu router default-active="2" class="el-menu-vertical-demo">
+    <el-menu router :default-active="defaultActive">
       <main-menu-item :menus="routes"></main-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script setup lang="ts">
+import { localCache } from '@/utils/cache'
 import mainMenuItem from './main-menu-item.vue'
-import routes from '@/mock/router'
+import { computed } from 'vue'
+import { mapPathToMenu } from '@/utils/map-menus'
+import { useRoute } from 'vue-router'
+
+const routes = localCache.getCache('userMenus') || []
+
+const route = useRoute()
+const defaultActive = computed(() => {
+  return mapPathToMenu(route.path, routes)
+})
 </script>
 
 <style scoped lang="less">

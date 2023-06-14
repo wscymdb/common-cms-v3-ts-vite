@@ -18,7 +18,7 @@
           <el-dropdown-menu>
             <el-dropdown-item>个人中心</el-dropdown-item>
             <el-dropdown-item>首页</el-dropdown-item>
-            <el-dropdown-item>退出登录</el-dropdown-item>
+            <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -27,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import useLoginStore from '@/store/login/login'
 import { localCache } from '@/utils/cache'
 import { computed } from 'vue'
 
@@ -40,6 +41,10 @@ const avatarName = computed(() => {
 const full = () => {
   const app = document.getElementById('app') as Element
   app.requestFullscreen()
+}
+const loginStore = useLoginStore()
+const loginOut = () => {
+  loginStore.loginOutAction()
 }
 </script>
 
