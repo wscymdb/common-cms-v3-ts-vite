@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import type { IAccountLogin } from '@/types/login'
 import { localCache } from '@/utils/cache'
-import { LOGIN_ACCOUNT, LOGIN_TOKEN } from '@/global/constants'
+import { LOGIN_ACCOUNT, LOGIN_TOKEN, USER_MENUS } from '@/global/constants'
 import router from '@/router'
 import menu from '@/mock/menu'
 import { mapMenusToRoutes } from '@/utils/map-menus'
@@ -43,7 +43,7 @@ const useLoginStore = defineStore<string, Record<string, any>, {}, ILoginAction>
     async getUserMenuTreeAction() {
       return new Promise((resolve) => {
         setTimeout(() => {
-          localCache.setCache('userMenus', menu)
+          localCache.setCache(USER_MENUS, menu)
           this.userMenus = menu
           resolve()
         }, 300)
@@ -54,7 +54,7 @@ const useLoginStore = defineStore<string, Record<string, any>, {}, ILoginAction>
     loadLoclInfosAction() {
       const token = localCache.getCache(LOGIN_TOKEN)
       const account = localCache.getCache('account')
-      const userMenus = localCache.getCache('userMenus')
+      const userMenus = localCache.getCache(USER_MENUS)
 
       if (token && account && userMenus) {
         this.token = token

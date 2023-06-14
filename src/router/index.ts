@@ -33,7 +33,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, form, next) => {
-  console.log(to)
   const { path } = to
 
   if (path !== '/login') {

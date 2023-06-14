@@ -1,7 +1,7 @@
 <template>
-  <div class="world">
+  <div class="menu">
     <h1>
-      world
+      menu
     </h1>
   </div>
 </template>
@@ -9,5 +9,5 @@
 <script setup lang="ts"></script>
 
 <style scoped lang="less">
-  .world {}
+  .menu {}
 </style>

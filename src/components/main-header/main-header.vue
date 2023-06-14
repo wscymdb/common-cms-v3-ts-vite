@@ -2,7 +2,9 @@
   <div class="main-header">
     <div class="chagne-icon">chagne-icon</div>
     <div class="header-content">
-      <div class="left">面包屑</div>
+      <div class="left">
+        <mainHeaderBreadcrumb></mainHeaderBreadcrumb>
+      </div>
       <div class="right">
         <main-header-config></main-header-config>
       </div>
@@ -12,6 +14,7 @@
 
 <script setup lang="ts">
 import mainHeaderConfig from './cpns/main-header-config.vue'
+import mainHeaderBreadcrumb from './cpns/main-header-breadcrumb.vue'
 </script>
 
 <style scoped lang="less">

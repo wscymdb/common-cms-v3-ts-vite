@@ -1,7 +1,7 @@
 <template>
-  <div class="index">
+  <div class="basketball">
     <h1>
-      index
+      basketball
     </h1>
   </div>
 </template>
@@ -9,5 +9,5 @@
 <script setup lang="ts"></script>
 
 <style scoped lang="less">
-  .index {}
+  .basketball {}
 </style>

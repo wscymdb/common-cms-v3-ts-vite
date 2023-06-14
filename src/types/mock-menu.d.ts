@@ -6,5 +6,6 @@ export interface IMenu {
   type: TType
   path: string
   icon?: string
+  parentId: string | number | null
   children?: IMenu[]
 }

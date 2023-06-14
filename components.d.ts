@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElAside: typeof import('element-plus/es')['ElAside']
+    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
+    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
@@ -25,6 +27,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     MainHeader: typeof import('./src/components/main-header/main-header.vue')['default']
+    MainHeaderBreadcrumb: typeof import('./src/components/main-header/cpns/main-header-breadcrumb.vue')['default']
     MainHeaderConfig: typeof import('./src/components/main-header/cpns/main-header-config.vue')['default']
     MainMenu: typeof import('./src/components/main-menu/main-menu.vue')['default']
     MainMenuItem: typeof import('./src/components/main-menu/main-menu-item.vue')['default']

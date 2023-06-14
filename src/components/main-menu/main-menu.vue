@@ -18,8 +18,9 @@ import mainMenuItem from './main-menu-item.vue'
 import { computed } from 'vue'
 import { mapPathToMenu } from '@/utils/map-menus'
 import { useRoute } from 'vue-router'
+import { USER_MENUS } from '@/global/constants'
 
-const routes = localCache.getCache('userMenus') || []
+const routes = localCache.getCache(USER_MENUS) || []
 
 const route = useRoute()
 const defaultActive = computed(() => {

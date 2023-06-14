@@ -14,9 +14,7 @@ export const mapMenusToRoutes = (menus: any[]) => {
   const routes: RouteRecordRaw[] = []
 
   findTrueRoute(menusCopy, localRoutes, routes, null)
-  console.log(localRoutes)
-  console.log(routes)
-  console.log(firstMenu)
+
   return routes
 }
 
@@ -99,6 +97,7 @@ export function mapPathToMenu(path: string, menus: any[]) {
   const menu = flatUserMenu.find((item) => item.path === path)
   if (menu) return menu.id + ''
 }
+
 function findChildren(menu: any, arr: any[]) {
   if (menu instanceof Array) {
     for (let item of menu) {
@@ -108,4 +107,45 @@ function findChildren(menu: any, arr: any[]) {
   } else {
     arr.push(menu)
   }
+}
+
+interface IBreadcrumbs {
+  name: string
+  path: string
+}
+/**
+ * 将路径转成面包屑
+ * @param path
+ * @param menus
+ * @returns
+ */
+export function mapPathToBreadcrumbs(path: string, menus: any[]) {
+  let breadcrumbs: IBreadcrumbs[] = []
+  for (let menu of menus) {
+    if (menu.children) {
+      for (let subMenu of menu.children) {
+        if (subMenu.children) {
+          for (let lastMenu of subMenu.children) {
+            if (lastMenu.path === path) {
+              breadcrumbs = [
+                { name: menu.name, path: menu.path },
+                { name: subMenu.name, path: subMenu.path },
+                { name: lastMenu.name, path: lastMenu.path }
+              ]
+            }
+          }
+        } else {
+          if (subMenu.path === path) {
+            breadcrumbs = [
+              { name: menu.name, path: menu.path },
+              { name: subMenu.name, path: subMenu.path }
+            ]
+          }
+        }
+      }
+    } else {
+      breadcrumbs = [{ name: menu.name, path: menu.path }]
+    }
+  }
+  return breadcrumbs
 }
