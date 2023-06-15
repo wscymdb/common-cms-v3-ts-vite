@@ -1,6 +1,10 @@
 <template>
   <template v-for="menu in props.menus">
-    <el-sub-menu :index="menu.id + ''" :key="menu.id" v-if="menu.children && menu.children.length">
+    <el-sub-menu
+      :index="menu.id + ''"
+      :key="menu.id"
+      v-if="menu.children && menu.children.length && !menu.hidden"
+    >
       <template #title>
         <el-icon v-if="menu.icon">
           <component :is="menu.icon"></component>
@@ -13,7 +17,7 @@
       :index="menu.id + ''"
       :key="menu.id + 'sub'"
       :route="menu.path"
-      v-else-if="menu.path"
+      v-else-if="menu.path && !menu.hidden"
     >
       <el-icon v-if="menu.icon">
         <component :is="menu.icon"></component>
@@ -30,6 +34,7 @@ interface IMenu {
   type: 1 | 2 | 3
   path: string
   icon?: string
+  hidden: boolean
   children?: IMenu[]
 }
 interface IPros {

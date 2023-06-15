@@ -21,14 +21,15 @@ import { useRoute } from 'vue-router'
 import { USER_MENUS } from '@/global/constants'
 import useMainStore from '@/store/main/main'
 
-const routes = localCache.getCache(USER_MENUS) || []
-
 const route = useRoute()
+const mainStore = useMainStore()
+
+const routes = (localCache.getCache(USER_MENUS) || []) as any[]
+
+// 获取哪个菜单默认选中 不设置页面刷新的时候会有问题
 const defaultActive = computed(() => {
   return mapPathToMenu(route.path, routes)
 })
-
-const mainStore = useMainStore()
 </script>
 
 <style scoped lang="less">

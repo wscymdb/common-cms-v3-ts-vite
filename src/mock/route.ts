@@ -1,5 +1,5 @@
 // 此文件是用来自动生成路由和路由对应的vue组件的
-// ymcli addroutecpns ./src/mock/route.ts v3t
+// ymcli addroutecpns ./src/mock/route.ts ts
 // 注意因为该项目使用的是ES的规范，所以在使用该自动化工具的时候需要改为CommonJS的导出规范，只有当创建路由的时候才使用所以无伤大雅
 const routes = [
   {
@@ -26,6 +26,11 @@ const routes = [
     title: '篮球',
     name: 'basketball',
     dest: 'src/views/main/sing/dance/basketball'
+  },
+  {
+    title: '蹦迪',
+    name: 'bd',
+    dest: 'src/views/main/sing/dance/basketball/cpns'
   }
 ]
 
