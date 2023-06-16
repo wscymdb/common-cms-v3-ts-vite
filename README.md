@@ -257,7 +257,7 @@ ymcli addroutecpns ./src/mock/route.ts ts
 src/mock/route.ts
 ```
 
-### 6.proxy配置跨域
+## 6.proxy配置跨域
 
 如果你的后端没有配置跨域，那么你需要在项目中使用proxy代理，你只需要在`.env.development(开发环境)`和`.env.production(生产环境)`文件中更改`BITE_BASE_URL`即可
 
@@ -280,7 +280,9 @@ VITE_BASE_API = '/api'
 
 
 
+## 7.git提交
 
+本项目采用的是Commitizen的规范来提交代码的，所以你在提交代码的时候需要将`git commit -m 'xx'`变成`npm run commit`
 
 
 
