@@ -22,7 +22,7 @@ class Cache {
     return this.getStorage()[key]
   }
 
-  removeCach(key: string) {
+  removeCache(key: string) {
     let val = this.getStorage()
     delete val[key]
 
@@ -38,6 +38,8 @@ class Cache {
   }
 }
 
+// 参数一表示是使用 localStorage还是sessionStorage
+// 参数二 命名空间的名字
 const localCache = new Cache(CacheType.Local, 'cym-cms')
 const sessionCache = new Cache(CacheType.Seession, 'cym-cms')
 

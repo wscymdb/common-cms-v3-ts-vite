@@ -1,6 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
 import dynamicRoutes from '@/router/dynamic_routes'
-console.log(dynamicRoutes)
 
 /**
  * 将菜单映射成路由
@@ -12,7 +11,6 @@ export const mapMenusToRoutes = (menus: any[]) => {
   const routes: RouteRecordRaw[] = []
 
   findTrueRoute(menus, routes)
-  console.log(routes)
 
   return routes
 }

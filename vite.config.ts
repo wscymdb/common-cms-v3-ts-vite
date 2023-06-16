@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 import path from 'path'
@@ -15,9 +15,11 @@ import ElementPlus from 'unplugin-element-plus/vite'
 //设置组件名称插件
 import DefineOptions from 'unplugin-vue-define-options/vite'
 
+// 根据环境读取.env文件的内容
+const env = loadEnv(process.env.NODE_ENV, process.cwd())
+
 // https://vitejs.dev/config/
 
-const pathSrc = path.resolve(__dirname, 'src')
 export default defineConfig({
   plugins: [
     vue(),
@@ -34,7 +36,14 @@ export default defineConfig({
     })
   ],
   server: {
-    open: true
+    open: true,
+    proxy: {
+      [env.VITE_BASE_API]: {
+        target: env.VITE_BASE_URL,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(env.VITE_BASE_API, '')
+      }
+    }
   },
   resolve: {
     alias: {

@@ -34,7 +34,6 @@ const useLoginStore = defineStore<string, Record<string, any>, {}, ILoginAction>
       await this.getUserMenuTreeAction()
       // 动态添加路由
       const routes = mapMenusToRoutes(this.userMenus)
-      console.log(routes)
 
       routes.forEach((route) => router.addRoute('main', route))
 
